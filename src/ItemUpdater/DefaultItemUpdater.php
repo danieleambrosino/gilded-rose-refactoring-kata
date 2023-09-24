@@ -6,8 +6,6 @@ namespace GildedRose\ItemUpdater;
 
 use GildedRose\Item;
 
-use function GildedRose\decreaseItemQuality;
-
 class DefaultItemUpdater implements ItemUpdaterInterface
 {
     public function updateSellIn(Item $item): void
@@ -17,9 +15,19 @@ class DefaultItemUpdater implements ItemUpdaterInterface
 
     public function updateQuality(Item $item): void
     {
-        decreaseItemQuality($item);
+        $this->decreaseItemQuality($item);
         if ($item->sellIn < 0) {
-            decreaseItemQuality($item);
+            $this->decreaseItemQuality($item);
         }
+    }
+
+    protected function decreaseItemQuality(Item $item, int $amount = 1): void
+    {
+        $item->quality = max(0, $item->quality - $amount);
+    }
+
+    protected function increaseItemQuality(Item $item, int $amount = 1, int $max = 50): void
+    {
+        $item->quality = min($max, $item->quality + $amount);
     }
 }

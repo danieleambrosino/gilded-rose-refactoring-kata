@@ -13,8 +13,17 @@ return static function (ECSConfig $ecsConfig): void {
     ]);
 
     $ecsConfig->sets([
+        SetList::PSR_12,
         SetList::CLEAN_CODE,
         SetList::COMMON,
-        SetList::PSR_12,
     ]);
+
+    $ecsConfig->ruleWithConfiguration(
+        PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer::class,
+        [
+            'operators' => [
+                '=>' => 'align'
+            ]
+        ]
+    );
 };

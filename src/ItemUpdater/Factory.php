@@ -17,11 +17,11 @@ final class Factory
     final public static function getUpdaterStrategy(string $itemName): ItemUpdaterInterface
     {
         return match ($itemName) {
-            self::AGED_BRIE => new AgedBrieUpdater(),
+            self::AGED_BRIE        => new AgedBrieUpdater(),
             self::BACKSTAGE_PASSES => new BackstagePassesUpdater(),
-            self::SULFURAS => new SulfurasUpdater(),
-            self::CONJURED => new ConjuredUpdater(),
-            default => new DefaultItemUpdater(),
+            self::SULFURAS         => new SulfurasUpdater(),
+            self::CONJURED         => new ConjuredUpdater(),
+            default                => new DefaultItemUpdater(),
         };
     }
 }

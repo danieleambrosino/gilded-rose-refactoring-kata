@@ -6,15 +6,13 @@ namespace GildedRose\ItemUpdater;
 
 use GildedRose\Item;
 
-use function GildedRose\increaseItemQuality;
-
 class AgedBrieUpdater extends DefaultItemUpdater
 {
     public function updateQuality(Item $item): void
     {
-        increaseItemQuality($item);
+        $this->increaseItemQuality($item);
         if ($item->sellIn < 0) {
-            increaseItemQuality($item);
+            $this->increaseItemQuality($item);
         }
     }
 }

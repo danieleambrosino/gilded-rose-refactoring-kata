@@ -7,7 +7,7 @@ namespace Tests;
 use GildedRose\Item;
 use PHPUnit\Framework\TestCase;
 
-class ItemTests extends TestCase
+class ItemTest extends TestCase
 {
     public function testStringRepresentationIsCorrect(): void
     {
